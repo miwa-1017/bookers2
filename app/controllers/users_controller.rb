@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       redirect_to user_path(@user),
-notice: "更新に成功しました。"
+notice: "Update was successfully"
     else
       render :edit
     end
