@@ -1,0 +1,42 @@
+<!-- User info -->
+    <div class="col-md-3">
+      <h2 class="mb-4 border-bottom pb-2">User info</h2>
+        <% if @user.profile_image.attached? %>
+          <%= image_tag @user.profile_image, size: "100x100", class: "mb-3 d-block mx-auto" %>
+        <% else %>
+          <%= image_tag 'no_image.jpg', size: "100x100", class: "mb-3 d-block mx-auto" %>
+        <% end %>
+      <table class="table table-borderless">
+        <tr>
+          <th>name</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <td><%= @user.introduction %></td>
+        </tr>
+      </table>
+
+      <% if @user == current_user %>
+        <div class="text-center">
+          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary w-100" do %>
+            <i class="fas fa-user-cog"></i>
+          <% end %>
+        </div>
+      <% end %>
+
+      <h2 class="mt-4 mb-3">New book</h2>
+      <%= form_with model: @book, url: books_path, local: true do |f| %>
+        <div class="mb-2">
+          <%= f.label :title, class: "small fw-bold" %>
+          <%= f.text_field :title, class: "form-control form-control-sm" %>
+        </div>
+        <div class="mb-2">
+          <%= f.label :body, "Opinion", class: "small fw-bold" %>
+          <%= f.text_area :body, class: "form-control form-control-sm" %>
+        </div>
+        <div>
+          <%= f.submit "Create Book", class: "btn btn-success btn-sm w-50" %>
+        </div>
+      <% end %>
+    </div>

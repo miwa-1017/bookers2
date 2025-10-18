@@ -1,22 +1,25 @@
-<div class="container px-5 px-sm-0">
+<div class="container">
   <div class="row">
-   <%= render 'users/info' %>
-   
-    <!-- Books -->
+    <%= render 'users/info' %>
+
     <div class="col-md-8 offset-md-1">
-      <h2 class="mb-4 border-bottom pb-2">Books</h2>
-      <table class="table table-striped">
+      <h2>Books</h2>
+      <table class="table">
         <thead>
           <tr>
             <th>Title</th>
             <th>Opinion</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <% @books.each do |book| %>
             <tr>
-              <td><%= link_to book.title, book_path(book), class: "text-decoration-none" %></td>
+              <td>
+                <%= link_to book.title, book_path(book) %>
+              </td>
               <td><%= book.body %></td>
+              <td><%= link_to book.user.name, user_path(book.user) %></td>
             </tr>
           <% end %>
         </tbody>

@@ -1,29 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-3">
-      <h2>User info</h2>
-      <% if @book.user.profile_image.attached? %>
-        <%= image_tag @book.user.profile_image, size: "100x100" %>
-      <% else %>
-        <%= image_tag 'no_image.jpg', size: "100x100" %>
-      <% end %>
-
-      <p><%= @book.user.name %></p>
-      <p><%= @book.user.introduction %></p>
-
-      <h2>New book</h2>
-      <%= form_with model: @book_new, url: books_path, method: :post do |f| %>
-        <div class="form-group">
-          <%= f.label :title %>
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= f.label :body, "Opinion" %>
-          <%= f.text_area :body, class: "form-control" %>
-        </div>
-        <%= f.submit "Create Book", class: "btn btn-success" %>
-      <% end %>
-    </div>
+    <%= render 'users/info' %>
 
     <div class="col-md-8 offset-md-1">
   <h2>Book detail</h2>
@@ -40,13 +17,6 @@
 
       <td><%= link_to @book.title, book_path(@book) %></td>
       <td><%= @book.body %></td>
-
-      <td>
-        <% if @book.user == current_user %>
-          <%= link_to "Edit", edit_book_path(@book), class: "btn btn-success" %>
-          <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-        <% end %>
-      </td>
     </tr>
   </table>
 </div>
