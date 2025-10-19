@@ -14,10 +14,8 @@
         </thead>
         <tbody>
           <% @books.each do |book| %>
-            <tr>
-              <td>
-                <%= link_to book.title, book_path(book) %>
-              </td>
+            <tr style="cursor: pointer;" onmouseover="this.style.backgroundColor='#f5f5f5';" onmouseout="this.style.backgroundColor='';" onclick="location.href='<%= book_path(book) %>'">
+              <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
               <td><%= link_to book.user.name, user_path(book.user) %></td>
             </tr>

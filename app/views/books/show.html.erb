@@ -1,24 +1,35 @@
+
 <div class="container px-5 px-sm-0">
   <div class="row">
     <%= render 'users/info' %>
 
     <div class="col-md-8 offset-md-1">
-  <h2>Book detail</h2>
-  <table class="table">
-    <tr>
-      <td>
-        <% if @book.user.profile_image.attached? %>
-          <%= image_tag @book.user.profile_image, size: "100x100" %>
-        <% else %>
-          <%= image_tag 'no_image.jpg', size: "100x100" %>
-        <% end %><br>
-        <%= link_to @book.user.name, user_path(@book.user) %>
-      </td>
+      <h2>Book detail</h2>
 
-      <td><%= link_to @book.title, book_path(@book) %></td>
-      <td><%= @book.body %></td>
-    </tr>
-  </table>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <% if @book.user.profile_image.attached? %>
+                <%= image_tag @book.user.profile_image, size: "100x100" %>
+              <% else %>
+                <%= image_tag 'no_image.jpg', size: "100x100" %>
+              <% end %><br>
+              <td><%= link_to @book.user.name, user_path(@book.user), class: "text-decoration-none text-primary" %></td>
+            </td>
+
+            <td><%= @book.title %></td>
+            <td><%= @book.body %></td>
+
+            <% if @book.user == current_user %>
+              <td>
+                <%= link_to "Edit", edit_book_path(@book), class: "btn btn-success btn-sm" %>
+                <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+              </td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-
-

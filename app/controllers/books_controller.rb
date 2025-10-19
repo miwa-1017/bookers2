@@ -14,6 +14,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book)
     else
+      @user = current_user
       @books = Book.all
       render :index
   end
@@ -44,6 +45,17 @@ end
     @book.destroy
     flash[:notice] = "Book was successfully destroyed."
     redirect_to books_path
+  end
+
+  before_action :ensure_correct_user,
+  only: [:edit, :update, :destroy]
+
+  def ensure_correct_user
+    @book = Book.find(params[:id])
+    unless @book.user == current_user
+      redirect_to books_path, alert: 
+      "You are not authorized to edit this book."
+    end
   end
 
   private
