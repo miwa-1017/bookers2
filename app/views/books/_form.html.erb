@@ -1,0 +1,28 @@
+<h2 class="mt-4 mb-3">New book</h2>
+<% if book.errors.any? %>
+  <div class="alert alert-danger">
+    <h4><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h4>
+    <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: book, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :body, "Body" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit(book.persisted? ? "Update Book" : "Create Book",
+                 class: "btn btn-success") %>
+  </div>
+<% end %>
