@@ -4,7 +4,7 @@
    <div class="col-md-3">
       <%= render 'users/info', user: @user %> 
       <%= render 'books/form', book: @book %>
-    </div>
+   </div>
 
     <div class="col-md-8 offset-md-1">
       <h2 class="mb-4 border-bottom pb-2">Books</h2>
@@ -18,6 +18,17 @@
         <tbody>
           <% @books.each do |book| %>
             <tr>
+              <td>
+                <% if book.user.profile_image.attached? %>
+                  <%= link_to user_path(book.user) do %>
+                    <%=image_tag book.user.profile_image, size: "60x60" %>
+                  <% end %>
+                <% else %>
+                  <%= link_to user_path(book.user) do %>
+                     <%=image_tag book.user.profile_image, size: "60x60" %>
+                  <% end %>
+                <% end %>
+              </td>
               <td><%= link_to book.title, book_path(book), class: "text-decoration-none" %></td>
               <td><%= book.body %></td>
             </tr>

@@ -215,7 +215,7 @@ Userモデルのテスト
     ユーザのプロフィール情報編集失敗: nameを1文字にする
 [32m      更新されない[0m
 [32m      ユーザ編集画面を表示しており、フォームの内容が正しい[0m
-[31m      バリデーションエラーが表示される (FAILED - 1)[0m
+[32m      バリデーションエラーが表示される[0m
     投稿データの新規投稿失敗: 投稿一覧画面から行い、titleを空にする
 [32m      投稿が保存されない[0m
 [32m      投稿一覧画面を表示している[0m
@@ -226,7 +226,7 @@ Userモデルのテスト
 [32m      投稿編集画面を表示しており、フォームの内容が正しい[0m
 [32m      エラーメッセージが表示される[0m
   ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する
-[31m    ユーザ一覧画面 (FAILED - 2)[0m
+[32m    ユーザ一覧画面[0m
 [32m    ユーザ詳細画面[0m
 [32m    ユーザ情報編集画面[0m
 [32m    投稿一覧画面[0m
@@ -244,7 +244,7 @@ Userモデルのテスト
 [32m        投稿の削除リンクが表示されない[0m
       サイドバーの確認
 [32m        他人の名前と紹介文が表示される[0m
-[31m        他人のユーザ編集画面へのリンクが存在する (FAILED - 3)[0m
+[32m        他人のユーザ編集画面へのリンクが存在する[0m
 [32m        自分の名前と紹介文は表示されない[0m
 [32m        自分のユーザ編集画面へのリンクは存在しない[0m
     他人の投稿編集画面
@@ -252,17 +252,17 @@ Userモデルのテスト
     他人のユーザ詳細画面のテスト
       表示の確認
 [32m        URLが正しい[0m
-[31m        投稿一覧のユーザ画像のリンク先が正しい (FAILED - 4)[0m
+[32m        投稿一覧のユーザ画像のリンク先が正しい[0m
 [32m        投稿一覧に他人の投稿のtitleが表示され、リンクが正しい[0m
 [32m        投稿一覧に他人の投稿のopinionが表示される[0m
 [32m        自分の投稿は表示されない[0m
       サイドバーの確認
 [32m        他人の名前と紹介文が表示される[0m
-[31m        他人のユーザ編集画面へのリンクが存在する (FAILED - 5)[0m
+[32m        他人のユーザ編集画面へのリンクが存在する[0m
 [32m        自分の名前と紹介文は表示されない[0m
 [32m        自分のユーザ編集画面へのリンクは存在しない[0m
     他人のユーザ情報編集画面
-[31m      遷移できず、自分のユーザ詳細画面にリダイレクトされる (FAILED - 6)[0m
+[32m      遷移できず、自分のユーザ詳細画面にリダイレクトされる[0m
   グリッドシステムのテスト: container, row, col-md-〇を正しく使えている
 [32m    ユーザ一覧画面[0m
 [32m    ユーザ詳細画面[0m
@@ -281,7 +281,7 @@ Userモデルのテスト
     ヘッダー: ログインしている場合
 [32m      Homeリンクのアイコンが表示される[0m
 [32m      Usersリンクのアイコンが表示される[0m
-[31m      Booksリンクのアイコンが表示される (FAILED - 7)[0m
+[32m      Booksリンクのアイコンが表示される[0m
 [32m      Log outリンクのアイコンが表示される[0m
     サイドバー
 [32m      ユーザ一覧画面でレンチアイコンが表示される[0m
@@ -289,66 +289,6 @@ Userモデルのテスト
 [32m      投稿一覧画面でレンチアイコンが表示される[0m
 [32m      投稿詳細画面でレンチアイコンが表示される[0m
 
-Failures:
-
-  1) [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする バリデーションエラーが表示される
-     [31mFailure/Error: expect(page).to have_content "is too short (minimum is 2 characters)"[0m
-     [31m  expected to find text "is too short (minimum is 2 characters)" in "📚Bookers\nHome Users Books Log out\nUser info\nName\nProfile image\nIntroduction d1fb18vym68fwx3bok2t\nCopyRight Infratop.inc"[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:116:in `block (4 levels) in <main>'[0m
-
-  2) [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ一覧画面
-     [31mFailure/Error: <% if user.profile_image.attached? %>[0m
-     [31m[0m
-     [31mActionView::Template::Error:[0m
-     [31m  undefined method `profile_image' for nil:NilClass[0m
-     [36m# ./app/views/users/_info.html.erb:3:in `_app_views_users__info_html_erb___1737820831919803708_25120'[0m
-     [36m# ./app/views/users/index.html.erb:3:in `_app_views_users_index_html_erb___4022644060459213833_27400'[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:180:in `block (3 levels) in <main>'[0m
-     [36m# ------------------[0m
-     [36m# --- Caused by: ---[0m
-     [36m# NoMethodError:[0m
-     [36m#   undefined method `profile_image' for nil:NilClass[0m
-     [36m#   ./app/views/users/_info.html.erb:3:in `_app_views_users__info_html_erb___1737820831919803708_25120'[0m
-
-  3) [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 他人のユーザ編集画面へのリンクが存在する
-     [31mFailure/Error: expect(page).to have_link '', href: edit_user_path(other_user)[0m
-     [31m  expected to find link "" with href "/users/2/edit" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:248:in `block (5 levels) in <main>'[0m
-
-  4) [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ詳細画面のテスト 表示の確認 投稿一覧のユーザ画像のリンク先が正しい
-     [31mFailure/Error: expect(page).to have_link '', href: user_path(other_user)[0m
-     [31m  expected to find link "" with href "/users/2" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:283:in `block (5 levels) in <main>'[0m
-
-  5) [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ詳細画面のテスト サイドバーの確認 他人のユーザ編集画面へのリンクが存在する
-     [31mFailure/Error: expect(page).to have_link '', href: edit_user_path(other_user)[0m
-     [31m  expected to find link "" with href "/users/2/edit" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:303:in `block (5 levels) in <main>'[0m
-
-  6) [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ情報編集画面 遷移できず、自分のユーザ詳細画面にリダイレクトされる
-     [31mFailure/Error: expect(current_path).to eq '/users/' + user.id.to_s[0m
-     [31m[0m
-     [31m  expected: "/users/1"[0m
-     [31m       got: "/users/2/edit"[0m
-     [31m[0m
-     [31m  (compared using ==)[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:318:in `block (4 levels) in <main>'[0m
-
-  7) [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Booksリンクのアイコンが表示される
-     [31mFailure/Error: is_expected.to have_selector '.fa-solid.fa-book-open, .fas.fa-book-open'[0m
-     [31m  expected to find css ".fa-solid.fa-book-open, .fas.fa-book-open" but there were no matches[0m
-     [36m# ./spec/system/03_finishing_touches_spec.rb:418:in `block (4 levels) in <main>'[0m
-
-Finished in 21.37 seconds (files took 3.79 seconds to load)
-[31m201 examples, 7 failures[0m
-
-Failed examples:
-
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:115[0m [36m# [STEP3] 仕上げのテスト 処理失敗時のテスト ユーザのプロフィール情報編集失敗: nameを1文字にする バリデーションエラーが表示される[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:179[0m [36m# [STEP3] 仕上げのテスト ログインしていない場合のアクセス制限のテスト: アクセスできず、ログイン画面に遷移する ユーザ一覧画面[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:247[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人の投稿詳細画面のテスト サイドバーの確認 他人のユーザ編集画面へのリンクが存在する[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:282[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ詳細画面のテスト 表示の確認 投稿一覧のユーザ画像のリンク先が正しい[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:302[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ詳細画面のテスト サイドバーの確認 他人のユーザ編集画面へのリンクが存在する[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:316[0m [36m# [STEP3] 仕上げのテスト 他人の画面のテスト 他人のユーザ情報編集画面 遷移できず、自分のユーザ詳細画面にリダイレクトされる[0m
-[31mrspec ./spec/system/03_finishing_touches_spec.rb:417[0m [36m# [STEP3] 仕上げのテスト アイコンのテスト ヘッダー: ログインしている場合 Booksリンクのアイコンが表示される[0m
+Finished in 20.36 seconds (files took 2.06 seconds to load)
+[32m201 examples, 0 failures[0m
 

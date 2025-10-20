@@ -1,4 +1,4 @@
-<h2 class="mt-4 mb-3">New book</h2>
+<h2 class="mt-3">New book</h2>
 <% if book.errors.any? %>
   <div class="alert alert-danger">
     <h4><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h4>
@@ -25,4 +25,4 @@
     <%= f.submit(book.persisted? ? "Update Book" : "Create Book",
                  class: "btn btn-success") %>
   </div>
-<% end %>
+    <% end %>
